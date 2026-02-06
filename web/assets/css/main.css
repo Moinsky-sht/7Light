@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-parchment text-ink antialiased font-serif;
+  }
+}
+
+@layer components {
+  .input-base {
+    @apply w-full rounded-lg border border-ink/20 bg-white px-3 py-2 text-sm text-ink shadow-sm outline-none transition focus:border-cinnabar/60 focus:ring-2 focus:ring-cinnabar/20;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-cinnabar px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg border border-ink/20 bg-white/70 px-4 py-2 text-sm font-semibold text-ink shadow-sm transition hover:bg-ink/5 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    letter-spacing: 0.2em;
+  }
+
+  .ink-stroke {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+    filter: url(#ink-roughness);
+  }
+}
+
+/* Animations */
+@keyframes breathe {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+    filter: blur(8px);
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+    filter: blur(12px);
+  }
+}
+
+.animate-breathe {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+.lantern-sway {
+  animation: sway 4s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.lantern-sway-delayed {
+  animation: sway 5s ease-in-out infinite reverse;
+  transform-origin: top center;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float-slow {
+  animation: float 6s infinite ease-in-out;
+}
+
+.animate-float-medium {
+  animation: float 4s infinite ease-in-out;
+}
+
+.animate-float-fast {
+  animation: float 3s infinite ease-in-out;
+}
+
+@keyframes pulse-seal {
+  0% {
+    box-shadow: 0 0 0 0 rgba(185, 58, 50, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 6px rgba(185, 58, 50, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(185, 58, 50, 0);
+  }
+}
+
+.animate-pulse-seal {
+  animation: pulse-seal 2s infinite;
+}
